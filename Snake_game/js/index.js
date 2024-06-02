@@ -10,6 +10,8 @@ let soundEnable=true;
 let lastPaintTime=0;
 let snakeArr=[{x:13,y:15}]
 let food={x:6,y:7};
+document.getElementById('easy').style.backgroundColor="lightgreen";
+document.getElementById('on').style.backgroundColor="lightgreen";
 //Game function
 function main(ctime){
     window.requestAnimationFrame(main);
@@ -18,8 +20,7 @@ function main(ctime){
     }else{
        lastPaintTime=ctime;
        gameEngine();
-    }
-       
+    }       
 }
 function isCollide(snake){
     for(let i=1;i<snakeArr.length;i++){
@@ -41,7 +42,6 @@ function gameEngine(){
         inputdir={x:0,y:0};
         alert("Gameover.Press any key to play again!");
         snakeArr=[{x:13,y:15}];
-        musicSound.play();
         score=0;
         scoreBox.innerHTML="Score : "+score;
         if(soundEnable) musicSound.play();
@@ -137,8 +137,30 @@ window.addEventListener('keydown',e=>{
 document.getElementById('on').addEventListener('click', e=>{
     soundEnable=true;
     musicSound.play();
+    document.getElementById('on').style.backgroundColor="lightgreen";
+    document.getElementById('off').style.backgroundColor="";
 });
 document.getElementById('off').addEventListener('click', e=>{
     soundEnable=false;
     musicSound.pause();
+    document.getElementById('off').style.backgroundColor="lightgreen";
+    document.getElementById('on').style.backgroundColor="";
+});
+document.getElementById('easy').addEventListener('click', e=>{
+    document.getElementById('medium').style.backgroundColor="";
+    document.getElementById('hard').style.backgroundColor="";
+    document.getElementById('easy').style.backgroundColor="lightgreen";
+    speed=5;
+});
+document.getElementById('medium').addEventListener('click', e=>{
+    document.getElementById('medium').style.backgroundColor="lightgreen";
+    document.getElementById('hard').style.backgroundColor="";
+    document.getElementById('easy').style.backgroundColor="";
+    speed=8;
+});
+document.getElementById('hard').addEventListener('click', e=>{
+    document.getElementById('medium').style.backgroundColor="";
+    document.getElementById('hard').style.backgroundColor="lightgreen";
+    document.getElementById('easy').style.backgroundColor="";
+    speed=12;
 });
