@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock | DOM</title>
+</head>
+<style>
+   body{
+   background-image: url('pic.jpg');
+   background-repeat: no-repeat;
+   background-size:cover;
+   }
+   #time{
+    width:400px;
+    height:40px;
+    /* border:2px solid orange; */
+    background-color: black;
+    opacity: 0.7;
+    margin:auto;
+    font-size: 25px;
+    padding: 15px;
+ }
+ #date{
+    width:400px;
+    height:50px;
+    /* border:2px solid orange; */
+    background-color: black;
+    opacity: 0.7;
+    margin:auto;
+    font-size: 25px;
+    padding: 15px;
+ }
+
+</style>
+<body>
+   <center><h1 style="margin-top: 250px;"><u>Local Time</u></h1></center>
+   <div id="time" style="color:white;font-size: 40px;text-align: center;"></div>
+   <div id="date" style="color:white;font-size: 40px;text-align: center;"></div><br>
+   <button id="start" style="margin-left:700px; width:100px;height:40px;font-size:20px;background-color:lightgreen;"><b>Start</b></button>
+   <button id="stop" style="margin-left:700px; width:100px;height:40px;font-size:20px;background-color:lightgreen;"><b>Stop</b></button>
+   <script>
+     const timedisplay=document.querySelector("#time");
+     const datedisplay=document.querySelector("#date");
+     const start=document.querySelector("#start");
+     const stop=document.querySelector("#stop");
+     let show;
+    //  timedisplay.innerHTML="happy";
+     start.addEventListener('click',function(e){
+            show=setInterval(function(){
+            const date=new Date();
+            timedisplay.innerHTML=date.toLocaleTimeString();
+            datedisplay.innerHTML=date.toLocaleDateString();
+            // timedisplay.innerHtml=;
+     },1000);
+     });
+     console.log(show);
+     stop.addEventListener('click', function() {
+      clearInterval(show);
+      timedisplay.innerHTML = 'Time & Date stopped ';
+      datedisplay.innerHTML = '(click on start)';
+    });
+   </script>
+</body>
+</html>
